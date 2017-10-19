@@ -1,0 +1,41 @@
+<center>
+    <h1>Games</h1>
+    <div class="starter-template">
+    <h1></h1>
+
+<section class="row text-center placeholders">
+    {{#each game}}
+    <div class="col-6 col-sm-3 placeholder">
+        <img src="{{path}}" width="200" height="200" style="border-radius: 50%;" >
+        <h4>{{name}}</h4>
+        <a href="/game/{{name}}">Details about {{name}}</a>
+    </div>
+    {{/each}}
+</section>
+<form method = "post" enctype="multipart/form-data">
+    <input id ="image" type="file" name ="pic" accept="image/*">
+    <br>
+    <input name = "name" type = "text" placeholder="name">
+    <div class="btn-group">
+        <button type="button" id = "selected" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            selecte
+        </button>
+        <div class="dropdown-menu">
+            {{#each publisher}}
+            <button class="dropdown-item" name = "{{name}}" type="button">{{name}}</button>
+            {{/each}}
+        </div>
+    </div>
+    <br>
+    <input name = "publisher" type = "hidden" id = "publisher">
+    <input type="submit" value="add game">
+</form>
+</center>
+<script>
+    $('.btn-group').on('shown.bs.dropdown', function () {
+        $('.dropdown-item').click(function(){
+            $('#selected').text(this.name);
+            $('#publisher').val(this.name);
+        })
+    })
+</script>

@@ -1,0 +1,36 @@
+<center>
+<div id = "info">
+    {{#with publisher}}
+    <h1 id = "name">Publishser: {{name}}</h1>
+    {{/with}}
+</div>
+<div id = "update">
+    <form  method = "post">
+        <input id = "newName" name = "newName">
+        <br>
+        <button type = "submit" value = "update" name = "button">update</button>
+    </form>
+</div>
+<form method="post" id = "second">
+    <button type ="button" onclick = "update()" class="btn btn-outline-primary">Edit</button>
+    <button type = "submit" value = "delete" name = "button" class="btn btn-outline-primary">delete</button>
+</form>
+</center>
+<script>
+    $(document).ready(function(){
+        $('#info').show();
+        $('#update').hide();
+    })
+
+     function update(){
+        const info = document.getElementById('info');
+        const second = document.getElementById('second');
+        const update = document.getElementById('update');
+        const newName = document.getElementById('newName');
+        newName.value =  $('#name').text().substring( $('#name').text().indexOf(':')+2);
+        info.style.display  = "none";
+        update.style.display = "block";
+        second.style.display  = "none";
+    }
+
+</script>

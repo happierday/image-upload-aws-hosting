@@ -1,0 +1,58 @@
+<center>
+<img src="../{{path}}" width="500" height="500" style="border-radius: 20%;">
+<div id = "info">
+    <h1 id="name">Game name: {{name}}</h1>
+    <h1 id = "publisher">Published by: {{publisher}}</h1>    
+</div>
+<div id = "update">
+    <form  method = "post" enctype="multipart/form-data">
+        <input id ="image" type="file" name ="pic" accept="image/*">
+        <br>
+        <input id = "newName" name = "newName">
+        <div class="btn-group">
+            <button type="button" id = "selected" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                selecte
+            </button>
+            <div class="dropdown-menu">
+                {{#each publishers}}
+                <button class="dropdown-item" name = "{{name}}" type="button">{{name}}</button>
+                {{/each}}
+            </div>
+        </div>
+        <br>
+        <input name = "publisher" type = "hidden" id = "publisherUpdate">
+        <button type = "submit" value = "update" name = "button">update</button>
+    </form>
+</div>
+<form method="post" id = "second">
+    <button type ="button" onclick = "update()" class="btn btn-outline-primary">Edit</button>
+    <button type = "submit" value = "delete" name = "button" class="btn btn-outline-primary">delete</button>
+</form>
+</center>
+<script>
+    $(document).ready(function(){
+        $('#info').show();
+        $('#update').hide();
+    })
+
+    $('.btn-group').on('shown.bs.dropdown', function () {
+        $('.dropdown-item').click(function(){
+            $('#selected').text(this.name);
+            $('#publisherUpdate').val(this.name);
+        })
+    })
+
+    function update(){
+        const info = document.getElementById('info');
+        const second = document.getElementById('second');
+        const update = document.getElementById('update');
+        const newName = document.getElementById('newName');
+
+        newName.value =  $('#name').text().substring( $('#name').text().indexOf(':')+2);
+
+        info.style.display  = "none";
+        update.style.display = "block";
+        second.style.display  = "none";
+    }
+
+</script>

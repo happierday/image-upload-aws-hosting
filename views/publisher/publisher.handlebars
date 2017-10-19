@@ -1,0 +1,18 @@
+<center>
+    <h1>Publishers</h1>
+    <div>
+        <ul class="list-group">
+            {{#each publisher}}
+                <li class="list-group-item">
+                    <a href="/publisher/{{name}}">{{name}}</a>
+                    <br>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+    <form method = "post">
+        <input name = "name" type = "text" placeholder="name">
+        <br>
+        <input type = "submit" value = "add publisher">
+    </form>
+</center>
