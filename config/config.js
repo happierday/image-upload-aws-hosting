@@ -2,5 +2,5 @@ const crypto = require('crypto').randomBytes(256).toString('hex');
 
 module.exports = {
     secret: crypto,
-    url : 'mongodb://localhost:27017/demo'
+    url : 'mongodb://wu134679:wu134679@ec2-18-216-60-167.us-east-2.compute.amazonaws.com/dummyDB'
 }
